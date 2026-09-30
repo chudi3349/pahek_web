@@ -1,0 +1,154 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<style>
+{% include "templates/includes/pahek_shared.css" %}
+
+.insight-hero{ background:var(--navy); color:#fff; padding:148px 0 72px; position:relative; overflow:hidden; }
+.insight-hero .wrap{ max-width:760px; position:relative; z-index:2; }
+.insight-hero .eyebrow{ color:var(--blue-light); }
+.insight-hero h1{ font-size:clamp(32px, 4.2vw, 48px); font-weight:700; line-height:1.15; color:#fff; margin-bottom:var(--space-3); }
+.insight-meta{ display:flex; gap:var(--space-4); flex-wrap:wrap; font-family:var(--font-mono); font-size:12.5px; color:rgba(255,255,255,0.55); margin-top:var(--space-3); }
+.insight-cover{ max-width:1240px; margin:0 auto; padding:0 var(--space-4); margin-top:-40px; position:relative; z-index:3; }
+.insight-cover img{ width:100%; max-height:480px; object-fit:cover; border:1px solid var(--line); }
+.insight-article{ max-width:720px; margin:var(--space-7) auto; padding:0 var(--space-4); }
+.insight-article p{ font-size:17px; line-height:1.75; color:#2A2D3A; margin-bottom:var(--space-3); }
+.insight-article h2{ font-size:26px; font-weight:600; margin:var(--space-6) 0 var(--space-3); }
+.insight-article h3{ font-size:21px; font-weight:600; margin:var(--space-5) 0 var(--space-2); }
+.insight-article ul, .insight-article ol{ margin:0 0 var(--space-3); padding-left:1.4em; }
+.insight-article li{ font-size:17px; line-height:1.7; color:#2A2D3A; margin-bottom:8px; }
+.insight-article blockquote{ margin:var(--space-5) 0; padding:var(--space-3) var(--space-4); border-left:3px solid var(--blue); font-family:var(--font-display); font-size:20px; font-style:italic; color:var(--navy); }
+.insight-back{ max-width:720px; margin:0 auto; padding:0 var(--space-4); }
+.insight-back a{ font-size:14px; font-weight:600; color:var(--blue); }
+.related-wrap{ background:var(--grey-light); padding:var(--space-7) 0; margin-top:var(--space-7); }
+.related-wrap h3{ font-size:22px; font-weight:600; margin-bottom:var(--space-4); }
+.related-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-3); }
+@media (max-width:900px){ .related-grid{ grid-template-columns:1fr; } }
+</style>
+
+<header>
+  <nav>
+    <a href="/" class="logo-mark">
+      <img src="/files/homepage/logo-mark.jpg" alt="PAHEK Security icon mark">
+      <span class="logo-wordmark"><span class="logo-name"><b>PAHEK</b><b>SECURITY</b></span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#services">Services</a>
+      <a href="/our-approach">Framework</a>
+      <a href="/insights">Insights</a>
+      <a href="/about">About</a>
+      <a href="/#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="/#contact" class="btn btn-outline">Discuss Operational Challenges</a>
+      <a href="/#contact" class="btn btn-primary">Book an Assessment</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" onclick="toggleMobileMenu()"><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="/#services" onclick="closeMobileMenu()">Services</a>
+      <a href="/our-approach" onclick="closeMobileMenu()">Framework</a>
+      <a href="/insights" onclick="closeMobileMenu()">Insights</a>
+      <a href="/about" onclick="closeMobileMenu()">About</a>
+      <a href="/#contact" onclick="closeMobileMenu()">Contact</a>
+      <div class="mobile-cta">
+        <a href="/#contact" class="btn btn-outline" onclick="closeMobileMenu()">Discuss Operational Challenges</a>
+        <a href="/#contact" class="btn btn-primary" onclick="closeMobileMenu()">Book an Assessment</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="insight-hero">
+  <div class="wrap">
+    <div class="eyebrow">{% if article.article_number %}Article {{ "%02d"|format(article.article_number) }}{% else %}Insight{% endif %}</div>
+    <h1>{{ article.title }}</h1>
+    <div class="insight-meta">
+      <span>{{ article.author or "PAHEK Security" }}</span>
+      {% if article.published_date %}<span>{{ frappe.utils.formatdate(article.published_date) }}</span>{% endif %}
+    </div>
+  </div>
+</section>
+
+{% if article.cover_image %}
+<div class="insight-cover"><img src="{{ article.cover_image }}" alt="{{ article.title }}"></div>
+{% endif %}
+
+<article class="insight-article">
+  {{ article.content }}
+</article>
+
+<div class="insight-back">
+  <a href="/insights">&larr; Back to Operational Insights</a>
+</div>
+
+{% if related %}
+<div class="related-wrap">
+  <div class="wrap">
+    <h3>More Operational Insights</h3>
+    <div class="related-grid">
+      {% for r in related %}
+      <div class="insight-card">
+        {% if r.cover_image %}<div class="insight-thumb"><img src="{{ r.cover_image }}" alt="{{ r.title }}"></div>{% endif %}
+        <div class="insight-body">
+          {% if r.article_number %}<span class="insight-tag">Article {{ "%02d"|format(r.article_number) }}</span>{% endif %}
+          <h4>{{ r.title }}</h4>
+          <p>{{ r.excerpt }}</p>
+          <a href="/{{ r.route }}" class="read">Read Insight &rarr;</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="logo-mark" style="margin-bottom:var(--space-3);">
+          <img src="/files/homepage/logo-mark.jpg" alt="PAHEK Security icon mark">
+          <span class="logo-wordmark on-dark"><span class="logo-name"><b>PAHEK</b><b>SECURITY</b></span></span>
+        </a>
+        <p>PAHEK supports organizations through structured security operations systems focused on accountability, operational visibility, supervision integrity, and measurable operational control.</p>
+      </div>
+      <div class="footer-groups">
+        <div class="footer-col">
+          <h5 onclick="toggleFooter(this)">Company</h5>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/our-approach">Operational Framework</a></li>
+            <li><a href="/insights">Operational Insights</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 PAHEK Security Services Ltd. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMobileMenu(){
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('menuToggle');
+    const isOpen = menu.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+  }
+  function closeMobileMenu(){
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('menuToggle').classList.remove('open');
+  }
+  function toggleFooter(headEl){
+    if(window.innerWidth > 900) return;
+    headEl.parentElement.classList.toggle('open');
+  }
+</script>
+{% endblock %}

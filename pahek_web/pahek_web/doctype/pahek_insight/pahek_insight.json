@@ -1,0 +1,203 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "creation": "2026-09-30 14:00:00.000000",
+ "description": "An article published on PAHEK's Insights blog (/insights)",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "route",
+  "article_number",
+  "author",
+  "published_date",
+  "featured",
+  "column_break_content",
+  "cover_image",
+  "excerpt",
+  "content",
+  "seo_section",
+  "meta_title",
+  "meta_description",
+  "publishing_section",
+  "published"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "description": "Leave blank to auto-generate from the title",
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route",
+   "unique": 1
+  },
+  {
+   "description": "Optional display number, e.g. \"Article 01\"",
+   "fieldname": "article_number",
+   "fieldtype": "Int",
+   "label": "Article Number"
+  },
+  {
+   "default": "PAHEK Security",
+   "fieldname": "author",
+   "fieldtype": "Data",
+   "label": "Author"
+  },
+  {
+   "fieldname": "published_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Published Date"
+  },
+  {
+   "default": "0",
+   "description": "Show on the homepage insights teaser",
+   "fieldname": "featured",
+   "fieldtype": "Check",
+   "label": "Featured"
+  },
+  {
+   "fieldname": "column_break_content",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cover_image",
+   "fieldtype": "Attach Image",
+   "label": "Cover Image"
+  },
+  {
+   "description": "Short summary shown on the Insights index card",
+   "fieldname": "excerpt",
+   "fieldtype": "Small Text",
+   "label": "Excerpt",
+   "reqd": 1
+  },
+  {
+   "fieldname": "content",
+   "fieldtype": "Text Editor",
+   "label": "Content",
+   "reqd": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "seo_section",
+   "fieldtype": "Section Break",
+   "label": "SEO"
+  },
+  {
+   "fieldname": "meta_title",
+   "fieldtype": "Data",
+   "label": "Meta Title"
+  },
+  {
+   "fieldname": "meta_description",
+   "fieldtype": "Small Text",
+   "label": "Meta Description"
+  },
+  {
+   "fieldname": "publishing_section",
+   "fieldtype": "Section Break",
+   "label": "Publishing"
+  },
+  {
+   "default": "0",
+   "description": "Only PAHEK Admin/Editor can set this. AI Drafter can create and edit everything else but cannot publish.",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Published",
+   "permlevel": 1
+  }
+ ],
+ "has_web_view": 1,
+ "index_web_pages_for_search": 1,
+ "is_published_field": "published",
+ "links": [],
+ "modified": "2026-09-30 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PAHEK Web",
+ "name": "PAHEK Insight",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1,
+   "permlevel": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "PAHEK Admin",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "read": 1,
+   "role": "PAHEK Admin",
+   "share": 1,
+   "write": 1,
+   "permlevel": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "PAHEK Editor",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "print": 1,
+   "read": 1,
+   "role": "PAHEK Editor",
+   "share": 1,
+   "write": 1,
+   "permlevel": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "AI Drafter",
+   "write": 1
+  }
+ ],
+ "route": "insights",
+ "sort_field": "published_date",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}

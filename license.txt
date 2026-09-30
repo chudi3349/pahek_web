@@ -1,0 +1,6 @@
+Copyright (c) 2026 PAHEK Security. All rights reserved.
+
+This software is the property of PAHEK Security. Developed for PAHEK Security by
+Eji Tech Life Services under proposal PROP-2026-00003. Not licensed for use,
+copying, modification or distribution by any other party without written
+permission from PAHEK Security.

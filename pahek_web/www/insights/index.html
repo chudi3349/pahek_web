@@ -1,0 +1,127 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<style>
+{% include "templates/includes/pahek_shared.css" %}
+
+.insights-index-hero{ background:var(--navy); color:#fff; padding:148px 0 88px; text-align:center; }
+.insights-index-hero h1{ font-size:clamp(34px, 4.4vw, 52px); font-weight:700; color:#fff; margin-bottom:var(--space-3); }
+.insights-index-hero p{ color:rgba(255,255,255,0.75); font-size:17px; max-width:600px; margin:0 auto; }
+.insights-index-grid{ padding:var(--space-7) 0; }
+.insights-index-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-4); }
+@media (max-width:900px){ .insights-index-cards{ grid-template-columns:1fr; } }
+.insights-empty{ text-align:center; color:#5B5F6E; padding:var(--space-7) 0; font-size:16px; }
+</style>
+
+<header>
+  <nav>
+    <a href="/" class="logo-mark">
+      <img src="/files/homepage/logo-mark.jpg" alt="PAHEK Security icon mark">
+      <span class="logo-wordmark"><span class="logo-name"><b>PAHEK</b><b>SECURITY</b></span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#services">Services</a>
+      <a href="/our-approach">Framework</a>
+      <a href="/insights">Insights</a>
+      <a href="/about">About</a>
+      <a href="/#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="/#contact" class="btn btn-outline">Discuss Operational Challenges</a>
+      <a href="/#contact" class="btn btn-primary">Book an Assessment</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" onclick="toggleMobileMenu()"><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="/#services" onclick="closeMobileMenu()">Services</a>
+      <a href="/our-approach" onclick="closeMobileMenu()">Framework</a>
+      <a href="/insights" onclick="closeMobileMenu()">Insights</a>
+      <a href="/about" onclick="closeMobileMenu()">About</a>
+      <a href="/#contact" onclick="closeMobileMenu()">Contact</a>
+      <div class="mobile-cta">
+        <a href="/#contact" class="btn btn-outline" onclick="closeMobileMenu()">Discuss Operational Challenges</a>
+        <a href="/#contact" class="btn btn-primary" onclick="closeMobileMenu()">Book an Assessment</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="insights-index-hero">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center; color:var(--blue-light);">Operational Insights</div>
+    <h1>Field Observations on Supervision, Accountability &amp; Control</h1>
+    <p>Analysis drawn from real guarding operations, security risk assessments, and the operational systems PAHEK builds for clients.</p>
+  </div>
+</section>
+
+<section class="insights-index-grid">
+  <div class="wrap">
+    {% if articles %}
+    <div class="insights-index-cards">
+      {% for a in articles %}
+      <div class="insight-card">
+        {% if a.cover_image %}<div class="insight-thumb"><img src="{{ a.cover_image }}" alt="{{ a.title }}"></div>{% endif %}
+        <div class="insight-body">
+          {% if a.article_number %}<span class="insight-tag">Article {{ "%02d"|format(a.article_number) }}</span>{% endif %}
+          <h4>{{ a.title }}</h4>
+          <p>{{ a.excerpt }}</p>
+          <a href="/{{ a.route }}" class="read">Read Insight &rarr;</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="insights-empty">No insights published yet. Check back soon.</div>
+    {% endif %}
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="logo-mark" style="margin-bottom:var(--space-3);">
+          <img src="/files/homepage/logo-mark.jpg" alt="PAHEK Security icon mark">
+          <span class="logo-wordmark on-dark"><span class="logo-name"><b>PAHEK</b><b>SECURITY</b></span></span>
+        </a>
+        <p>PAHEK supports organizations through structured security operations systems focused on accountability, operational visibility, supervision integrity, and measurable operational control.</p>
+      </div>
+      <div class="footer-groups">
+        <div class="footer-col">
+          <h5 onclick="toggleFooter(this)">Company</h5>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/our-approach">Operational Framework</a></li>
+            <li><a href="/insights">Operational Insights</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 PAHEK Security Services Ltd. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMobileMenu(){
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('menuToggle');
+    const isOpen = menu.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+  }
+  function closeMobileMenu(){
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('menuToggle').classList.remove('open');
+  }
+  function toggleFooter(headEl){
+    if(window.innerWidth > 900) return;
+    headEl.parentElement.classList.toggle('open');
+  }
+</script>
+{% endblock %}
