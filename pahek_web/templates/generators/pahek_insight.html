@@ -24,6 +24,9 @@
 .related-wrap h3{ font-size:22px; font-weight:600; margin-bottom:var(--space-4); }
 .related-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-3); }
 @media (max-width:900px){ .related-grid{ grid-template-columns:1fr; } }
+
+/* This page ships its own header/nav/footer — hide the site's default navbar/footer. */
+nav.navbar, footer.web-footer { display: none !important; }
 </style>
 
 <header>

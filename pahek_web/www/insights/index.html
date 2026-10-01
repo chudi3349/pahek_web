@@ -11,6 +11,9 @@
 .insights-index-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-4); }
 @media (max-width:900px){ .insights-index-cards{ grid-template-columns:1fr; } }
 .insights-empty{ text-align:center; color:#5B5F6E; padding:var(--space-7) 0; font-size:16px; }
+
+/* This page ships its own header/nav/footer — hide the site's default navbar/footer. */
+nav.navbar, footer.web-footer { display: none !important; }
 </style>
 
 <header>
