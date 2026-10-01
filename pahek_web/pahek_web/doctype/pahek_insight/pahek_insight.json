@@ -194,7 +194,7 @@
    "write": 1
   }
  ],
- "route": "insights",
+ "route": "insight",
  "sort_field": "published_date",
  "sort_order": "DESC",
  "states": [],
