@@ -1,0 +1,88 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<style>
+{% include "templates/includes/pahek_css_about.css" %}
+</style>
+
+{% include "templates/includes/pahek_header.html" %}
+
+<!-- ================= SECTION A: OPENING CLAIM ================= -->
+<section class="claim-open">
+  <div class="wrap">
+    <div class="claim-head reveal">
+      <h1>{{ doc.hero_headline }}</h1>
+      <p class="claim-sub">{{ doc.hero_subheading }}</p>
+    </div>
+
+    <div class="evidence-frame reveal">
+      <img src="{{ doc.hero_image or '/files/about/field-notebook.jpg' }}" alt="A working notebook showing raw field observations being structured into a framework, beside a stack of dated notebooks and the quiet signs of a workspace in current use">
+    </div>
+    <p class="evidence-caption">{{ doc.hero_image_caption }}</p>
+  </div>
+</section>
+
+<!-- ================= SECTION B: FORMATION & REFINEMENT ================= -->
+<section class="prose-section">
+  <div class="wrap">
+    <div class="prose-head reveal">
+      <h2>{{ doc.formation_heading }}</h2>
+    </div>
+    <div class="prose-body reveal">
+      {{ doc.formation_body | safe }}
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION C: CONTINUITY ================= -->
+<section class="prose-section tinted">
+  <div class="wrap">
+    <div class="prose-head reveal">
+      <h2>{{ doc.continuity_heading }}</h2>
+    </div>
+    <div class="prose-body reveal">
+      {{ doc.continuity_body | safe }}
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION D: CONNECTING FORWARD ================= -->
+<section class="prose-section">
+  <div class="wrap">
+    <div class="prose-head reveal">
+      <h2>{{ doc.built_heading }}</h2>
+    </div>
+    <div class="prose-body reveal" style="margin-bottom:var(--space-5);">
+      <p>{{ doc.built_intro }}</p>
+    </div>
+    <div class="ref-grid-3 reveal">
+      {% for c in doc.built_cards %}
+      <div class="ref-card">
+        <div class="ref-label">{{ c.group_label }}</div>
+        <h4>{{ c.heading }}</h4>
+        <p>{{ c.body }}</p>
+        <a href="{{ c.link_route }}">{{ c.link_text }} &rarr;</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION E: CLOSE ================= -->
+<section class="final-cta" id="contact">
+  <div class="wrap final-cta-inner">
+    <h2>{{ doc.final_cta_heading }}</h2>
+    <p>{{ doc.final_cta_body }}</p>
+    <div class="final-cta-actions">
+      <a href="/#contact" class="btn btn-primary">Request an Operational Assessment</a>
+      <a href="{{ doc.final_cta_secondary_route or '/our-approach' }}" class="btn btn-outline-dark">{{ doc.final_cta_secondary_label }}</a>
+    </div>
+  </div>
+</section>
+
+{% include "templates/includes/pahek_footer.html" %}
+
+<script>
+{% include "templates/includes/pahek_nav_js.html" %}
+</script>
+{% endblock %}

@@ -1,0 +1,192 @@
+{% extends "templates/web.html" %}
+{% from "templates/includes/pahek_icons.html" import pahek_icon %}
+
+{% block page_content %}
+<style>
+{% include "templates/includes/pahek_css_risk_assessment.css" %}
+</style>
+
+{% include "templates/includes/pahek_header.html" %}
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-photo">
+    <img src="{{ doc.hero_image or '/files/security-risk-assessment/site-consultation.jpg' }}" alt="PAHEK assessors conducting a professional site consultation as part of a security risk assessment">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="wrap hero-inner">
+    <h1>{{ doc.hero_headline }}</h1>
+    <p class="sub">{{ doc.hero_subheading }}</p>
+    <div class="hero-actions">
+      <a href="/#contact" class="btn btn-primary">{{ doc.hero_cta_primary_label }} <span class="btn-arrow">&rarr;</span></a>
+      <a href="#diagnosis" class="btn btn-outline-dark">{{ doc.hero_cta_secondary_label }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROBLEM / RESPONSE (merged) ================= -->
+<section class="split-section reveal">
+  <div class="split-panel panel-light">
+    <span class="panel-marker"></span>
+    <h3>{{ doc.stakes_heading_1 }}</h3>
+    <p>{{ doc.stakes_body_1 }}</p>
+  </div>
+  <div class="split-panel panel-result">
+    <span class="panel-marker"></span>
+    <h3>{{ doc.stakes_heading_2 }}</h3>
+    <p>{{ doc.stakes_body_2 }}</p>
+  </div>
+</section>
+
+<!-- ================= WHERE THE DIAGNOSIS BEGINS ================= -->
+<section class="diagnosis-section" id="diagnosis">
+  <div class="wrap">
+    <div class="diagnosis-head reveal">
+      <h2 class="section-title" style="margin:0 auto;">{{ doc.diagnosis_heading }}</h2>
+      <p style="color:#4B4F5E; font-size:16px; margin-top:var(--space-2);">{{ doc.diagnosis_intro }}</p>
+    </div>
+
+    <div class="diagnosis-plate reveal">
+      <span class="corner-tl"></span><span class="corner-tr"></span><span class="corner-bl"></span><span class="corner-br"></span>
+
+      <div class="input-funnel">
+        <div class="input-tags">
+          {% for t in input_tags %}<span>{{ t }}</span>{% endfor %}
+        </div>
+      </div>
+      <div class="funnel-connector"></div>
+
+      <div class="diagnosis-hub-wrap">
+        <div class="diagnosis-hub">{{ doc.diagnosis_hub_label }}<span>{{ doc.diagnosis_hub_sublabel }}</span></div>
+      </div>
+      <div class="output-connector"></div>
+
+      <div class="output-fan">
+        {% for c in doc.diagnosis_output_cards %}
+        <div class="output-item">
+          <div class="output-card">
+            <div class="output-icon">{{ pahek_icon(c.icon_key, stroke='currentColor', stroke_width='1.8') }}</div>
+            <h4>{{ c.heading }}</h4>
+            <p>{{ c.body }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE DIAGNOSIS, DOCUMENTED ================= -->
+<section class="diagnosis-documented">
+  <div class="wrap">
+    <div class="comparison-head-block reveal">
+      <h2 class="section-title">{{ doc.documented_heading }}</h2>
+      <p style="color:#4B4F5E; font-size:17px; margin-top:var(--space-2);">{{ doc.documented_body }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIAGNOSIS: PROOF ================= -->
+<section class="control-proof reveal">
+  <div class="wrap">
+    <div class="control-proof-frame">
+      <img src="{{ doc.proof_image or '/files/security-risk-assessment/satellite-review.jpg' }}" alt="PAHEK assessors reviewing a site layout and cross-referencing satellite imagery during an assessment workshop">
+    </div>
+    <p>{{ doc.proof_caption }}</p>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="plan" id="plan">
+  <div class="wrap">
+    <div class="plan-head reveal">
+      <h2 class="section-title" style="margin:0 auto;">{{ doc.plan_heading }}</h2>
+    </div>
+    <div class="plan-flow reveal">
+      {% for s in doc.plan_steps %}
+      <div class="plan-step">
+        <div class="plan-num">{{ s.number }}</div>
+        <h4>{{ s.heading }}</h4>
+        <p>{{ s.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="plan-cta">
+      <a href="/#contact" class="btn btn-outline">{{ doc.plan_cta_label }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTORS (credibility strip) ================= -->
+<section class="services" style="padding-top:var(--space-7); padding-bottom:var(--space-7);">
+  <div class="wrap">
+    <div class="capability-grid-wrap reveal" style="margin-top:0; padding-top:0; border-top:none;">
+      <h3 style="text-align:center; font-size:22px; font-weight:600; max-width:640px; margin:0 auto var(--space-5);">{{ doc.sectors_heading }}</h3>
+      <div class="capability-grid">
+        {% for c in doc.sector_items %}
+        <div class="capability-item">{{ pahek_icon(c.icon_key, stroke='currentColor', stroke_width='1.6') }}<span>{{ c.heading }}</span></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FIELD OBSERVATIONS ================= -->
+<section class="field-obs">
+  <div class="wrap">
+    <div class="field-obs-head reveal">
+      <h2 class="section-title" style="margin:0 auto;">{{ doc.observations_heading }}</h2>
+    </div>
+    <div class="obs-carousel reveal">
+      {% for o in doc.observations %}
+      <div class="obs-slide{% if loop.first %} active{% endif %}"><span class="obs-index">{{ o.eyebrow }}</span><q>{{ o.quote_text }}</q></div>
+      {% endfor %}
+    </div>
+    <div class="obs-controls">
+      <button aria-label="Previous observation" onclick="obsPrev()">&larr;</button>
+      <div class="obs-dots" id="obsDots"></div>
+      <button aria-label="Next observation" onclick="obsNext()">&rarr;</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final-cta" id="contact">
+  <div class="wrap final-cta-inner">
+    <h2>{{ doc.final_cta_heading }}</h2>
+    <p>{{ doc.final_cta_body }}</p>
+    <div class="final-cta-actions">
+      <a href="/#contact" class="btn btn-primary">Request a Security Risk Assessment</a>
+      <a href="#diagnosis" class="btn btn-outline-dark">{{ doc.final_cta_secondary_label }}</a>
+    </div>
+  </div>
+</section>
+
+{% include "templates/includes/pahek_footer.html" %}
+
+<script>
+{% include "templates/includes/pahek_nav_js.html" %}
+
+// ---- field observations carousel (manual only) ----
+const obsSlides = document.querySelectorAll('.obs-slide');
+const obsDotsWrap = document.getElementById('obsDots');
+let obsIndex = 0;
+obsSlides.forEach((_, i)=>{
+  const dot = document.createElement('button');
+  if(i===0) dot.classList.add('active');
+  dot.setAttribute('aria-label', 'Go to observation ' + (i+1));
+  dot.onclick = ()=> setObs(i);
+  obsDotsWrap.appendChild(dot);
+});
+function setObs(i){
+  obsSlides[obsIndex].classList.remove('active');
+  obsDotsWrap.children[obsIndex].classList.remove('active');
+  obsIndex = (i + obsSlides.length) % obsSlides.length;
+  obsSlides[obsIndex].classList.add('active');
+  obsDotsWrap.children[obsIndex].classList.add('active');
+}
+function obsNext(){ setObs(obsIndex+1); }
+function obsPrev(){ setObs(obsIndex-1); }
+</script>
+{% endblock %}

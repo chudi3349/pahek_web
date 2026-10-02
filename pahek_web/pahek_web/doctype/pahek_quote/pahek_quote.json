@@ -1,0 +1,25 @@
+{
+ "actions": [],
+ "creation": "2026-10-02 09:00:00.000000",
+ "description": "A quote/carousel slide: doctrine principles, proof carousel, field observations",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["eyebrow", "quote_text", "attribution"],
+ "fields": [
+  {"description": "e.g. \"Observation 01 of 04\" or a proof-carousel pill label like \"Patrol Accountability\"", "fieldname": "eyebrow", "fieldtype": "Data", "label": "Eyebrow / Pill Label"},
+  {"fieldname": "quote_text", "fieldtype": "Small Text", "in_list_view": 1, "label": "Quote / Heading", "reqd": 1},
+  {"description": "Shown under the quote on proof-carousel style cards. Leave blank for simple quotes.", "fieldname": "attribution", "fieldtype": "Small Text", "label": "Body / Attribution"}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-02 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PAHEK Web",
+ "name": "PAHEK Quote",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "ASC",
+ "states": []
+}

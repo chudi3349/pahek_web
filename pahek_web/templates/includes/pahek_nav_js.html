@@ -1,0 +1,28 @@
+// ---- scroll reveal ----
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:0.12});
+revealEls.forEach(el=>io.observe(el));
+
+// ---- mobile menu ----
+function toggleMobileMenu(){
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('menuToggle');
+  const isOpen = menu.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.setAttribute('aria-expanded', isOpen);
+}
+function closeMobileMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+  const btn = document.getElementById('menuToggle');
+  btn.classList.remove('open');
+  btn.setAttribute('aria-expanded', 'false');
+}
+
+// ---- footer accordion (mobile) ----
+function toggleFooter(headEl){
+  if(window.innerWidth > 900) return;
+  const col = headEl.parentElement;
+  col.classList.toggle('open');
+}

@@ -1,0 +1,357 @@
+{% extends "templates/web.html" %}
+{% from "templates/includes/pahek_icons.html" import pahek_icon %}
+
+{% block page_content %}
+<style>
+{% include "templates/includes/pahek_css_home.css" %}
+</style>
+
+{% include "templates/includes/pahek_header.html" %}
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-photo">
+    <img src="{{ doc.hero_image or '/files/homepage/hero.jpg' }}" alt="PAHEK operational leadership conducting a site assessment from an elevated vantage point overlooking an active development">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="wrap hero-inner">
+    <h1>{{ doc.hero_headline }}</h1>
+    <p class="sub">{{ doc.hero_subheading }}</p>
+    <div class="hero-actions">
+      <a href="/#contact" class="btn btn-primary">{{ doc.hero_cta_primary_label }} <span class="btn-arrow">&rarr;</span></a>
+      <a href="/our-approach" class="btn btn-outline-dark">{{ doc.hero_cta_secondary_label }}</a>
+    </div>
+    <div class="hero-proof">
+      {% for s in doc.hero_stats %}
+      <div class="stat"><b>{{ s.value }}</b><span>{{ s.label }}</span></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ================= STAKES (split-screen) ================= -->
+<section class="split-section reveal">
+  <div class="split-panel panel-light">
+    <span class="panel-marker"></span>
+    <h3>{{ doc.stakes_heading_1 }}</h3>
+    <p>{{ doc.stakes_body_1 }}</p>
+  </div>
+  <div class="split-panel panel-dark">
+    <span class="panel-marker"></span>
+    <h3>{{ doc.stakes_heading_2 }}</h3>
+    {{ doc.stakes_body_2 | safe }}
+  </div>
+</section>
+<div class="split-cta">
+  <a href="/#services" class="btn btn-outline">Identify Operational Gaps</a>
+</div>
+
+<!-- ================= TRANSFORMATION (split-screen) ================= -->
+<section class="split-section reveal">
+  <div class="split-panel panel-dark" style="background:#1B1B4D;">
+    <span class="panel-marker"></span>
+    <h3>{{ doc.transformation_heading_1 }}</h3>
+    {{ doc.transformation_body_1 | safe }}
+  </div>
+  <div class="split-panel panel-result">
+    <span class="panel-marker"></span>
+    <h3>{{ doc.transformation_heading_2 }}</h3>
+    <p>{{ doc.transformation_body_2 }}</p>
+  </div>
+</section>
+<div class="split-cta">
+  <a href="/#services" class="btn btn-primary">Strengthen Operational Control</a>
+</div>
+
+<!-- ================= SERVICES ================= -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="services-intro reveal">
+      <h2 class="section-title">{{ doc.services_intro_heading }}</h2>
+      <p>{{ doc.services_intro_body }}</p>
+    </div>
+
+    <div class="service-groups">
+      <div class="group-operations reveal">
+        <div class="group-head"><span class="group-name">Operations</span><span class="group-line"></span></div>
+        <div class="card-row swipe">
+          {% for c in doc.service_cards_operations %}
+          <div class="service-card">
+            {{ pahek_icon(c.icon_key, class_='service-icon', stroke='#2F5FD1', stroke_width='1.6') }}
+            <h4>{{ c.heading }}</h4>
+            <p>{{ c.body }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="group-structure reveal">
+        <div class="group-head"><span class="group-name">Structure</span><span class="group-line"></span></div>
+        <div class="card-row swipe">
+          {% for c in doc.service_cards_structure %}
+          <div class="service-card">
+            {{ pahek_icon(c.icon_key, class_='service-icon', stroke='#B5793A', stroke_width='1.6') }}
+            <h4>{{ c.heading }}</h4>
+            <p>{{ c.body }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="group-governance reveal">
+        <div class="group-head"><span class="group-name">Governance</span><span class="group-line"></span></div>
+        <div class="card-row swipe">
+          {% for c in doc.service_cards_governance %}
+          <div class="service-card">
+            {{ pahek_icon(c.icon_key, class_='service-icon', stroke='#12123A', stroke_width='1.6') }}
+            <h4>{{ c.heading }}</h4>
+            <p>{{ c.body }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="capability-grid-wrap reveal">
+      <div class="eyebrow" style="justify-content:center;">Built To Improve</div>
+      <h3>{{ doc.capability_heading }}</h3>
+      <div class="capability-grid">
+        {% for c in doc.capability_items %}
+        <div class="capability-item">{{ pahek_icon(c.icon_key, stroke='currentColor', stroke_width='1.6') }}<span>{{ c.heading }}</span></div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="services-cta">
+      <a href="/#contact" class="btn btn-primary">Request an Operational Assessment <span class="btn-arrow">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PLAN ================= -->
+<section class="plan" id="plan">
+  <div class="wrap">
+    <div class="plan-head reveal">
+      <h2 class="section-title" style="margin:0 auto;">{{ doc.plan_heading }}</h2>
+      <p>PAHEK helps organizations strengthen operational control through a simple, structured process.</p>
+    </div>
+    <div class="plan-flow reveal">
+      {% for s in doc.plan_steps %}
+      <div class="plan-step">
+        <div class="plan-num">{{ s.number }}</div>
+        <h4>{{ s.heading }}</h4>
+        <p>{{ s.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="plan-cta">
+      <a href="/#contact" class="btn btn-primary">Request an Operational Assessment</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NARRATIVE BRIDGE ================= -->
+<section class="narrative-bridge reveal">
+  <img src="{{ doc.narrative_bridge_image or '/files/homepage/narrative-bridge.jpg' }}" alt="PAHEK operational training session covering intelligence, surveillance, patrol and risk methodology">
+  <div class="nb-overlay"></div>
+  <div class="nb-text">
+    <p>{{ doc.narrative_bridge_quote }}</p>
+  </div>
+</section>
+
+<!-- ================= AUTHORITY ================= -->
+<section class="authority" id="authority">
+  <div class="wrap">
+    <div class="authority-head reveal">
+      <h2 class="section-title">{{ doc.authority_heading }}</h2>
+    </div>
+    <div class="authority-grid reveal">
+      {% for c in doc.authority_cards %}
+      <div class="authority-card">
+        {% if c.icon_key %}
+        {{ pahek_icon(c.icon_key, class_='big-icon', stroke='#2F5FD1', stroke_width='1.6') }}
+        {% else %}
+        <span class="big"{% if c.tag_1 %} style="font-size:{{ c.tag_1 }}px;"{% endif %}>{{ c.group_label }}</span>
+        {% endif %}
+        <h4>{{ c.heading }}</h4>
+        <p>{{ c.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="compliance-strip reveal">
+      {% for c in doc.compliance_strip_items %}
+      <span>{{ c.heading }}</span>
+      {% endfor %}
+    </div>
+    <div class="authority-cta">
+      <a href="/#contact" class="btn btn-outline">Discuss Operational Challenges</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HUMAN AUTHORITY ================= -->
+<section class="human-authority">
+  <div class="wrap ha-grid reveal">
+    <div class="ha-visual">
+      <img src="{{ doc.human_authority_image or '/files/homepage/ha-visual.jpg' }}" alt="PAHEK operations supervisor reviewing site documentation with a security officer in a warehouse">
+    </div>
+    <div class="ha-content">
+      <h3>{{ doc.human_authority_heading }}</h3>
+      <p>{{ doc.human_authority_body_1 }}</p>
+      <p>{{ doc.human_authority_body_2 }}</p>
+      <div class="ha-stats">
+        {% for s in doc.human_authority_stats %}
+        <div class="stat"><b>{{ s.value }}</b><span>{{ s.label }}</span></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BLUEPRINT / DOCTRINE ================= -->
+<section class="blueprint" id="blueprint">
+  <div class="wrap">
+    <div class="blueprint-top reveal">
+      <div>
+        <h2 class="section-title" style="color:#fff;">{{ doc.blueprint_heading }}</h2>
+        <p>{{ doc.blueprint_body_1 }}</p>
+        <p>{{ doc.blueprint_body_2 }}</p>
+        <p>{{ doc.blueprint_body_3 }}</p>
+      </div>
+      <div class="blueprint-visual">
+        <div class="bp-photo">
+          <img src="{{ doc.blueprint_image or '/files/homepage/bp-photo.jpg' }}" alt="The PAHEK Security Guarding Operations Blueprint alongside real deployment plans, risk assessments and pre-deployment checklists">
+          <div class="bp-caption">{{ doc.blueprint_image_caption }}</div>
+        </div>
+        <div class="bp-pillars">
+          {% for p in blueprint_pillars %}<span>{{ p }}</span>{% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="doctrine reveal">
+      <div class="doctrine-label">Doctrine Principles</div>
+      <div class="doctrine-carousel">
+        {% for q in doc.doctrine_quotes %}
+        <div class="doctrine-slide{% if loop.first %} active{% endif %}"><q>{{ q.quote_text }}</q></div>
+        {% endfor %}
+      </div>
+      <div class="doctrine-controls">
+        <button aria-label="Previous principle" onclick="doctrinePrev()">&larr;</button>
+        <div class="doctrine-dots" id="doctrineDots"></div>
+        <button aria-label="Next principle" onclick="doctrineNext()">&rarr;</button>
+      </div>
+    </div>
+    <div class="blueprint-cta">
+      <a href="/our-approach" class="btn btn-outline-dark">Explore the Operational Framework</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INSIGHTS ================= -->
+<section class="insights" id="insights">
+  <div class="wrap">
+    <div class="insights-head reveal">
+      <div>
+        <h2 class="section-title">Operational Insights From the Field</h2>
+        <p>Field observations and operational analysis focused on supervision systems, accountability, operational exposure, and measurable control.</p>
+      </div>
+      <a href="/insights" class="btn btn-outline">View All Insights</a>
+    </div>
+
+    {% if insights %}
+    <div class="insight-row reveal">
+      {% for a in insights %}
+      <div class="insight-card">
+        {% if a.cover_image %}
+        <div class="insight-thumb">
+          <img src="{{ a.cover_image }}" alt="{{ a.title }}">
+        </div>
+        {% endif %}
+        <div class="insight-body">
+          {% if a.article_number %}<span class="insight-tag">Article {{ "%02d"|format(a.article_number) }}</span>{% endif %}
+          <h4>{{ a.title }}</h4>
+          <p>{{ a.excerpt }}</p>
+          <a href="/{{ a.route }}" class="read">Read Insight &rarr;</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- ================= PROOF CAROUSEL ================= -->
+<section class="proof" id="proof">
+  <div class="wrap">
+    <div class="proof-head reveal">
+      <h2 class="section-title" style="margin:0 auto;">Field-Tested Perspective</h2>
+    </div>
+    <div class="proof-carousel reveal">
+      {% for q in doc.proof_quotes %}
+      <div class="proof-slide{% if loop.first %} active{% endif %}"><div class="proof-card"><span class="proof-pill">{{ q.eyebrow }}</span><h3>{{ q.quote_text }}</h3><p>{{ q.attribution }}</p></div></div>
+      {% endfor %}
+    </div>
+    <div class="proof-controls">
+      <button aria-label="Previous slide" onclick="proofPrev()">&larr;</button>
+      <span class="proof-count"><span id="proofCurrent">1</span> / {{ doc.proof_quotes|length }}</span>
+      <button aria-label="Next slide" onclick="proofNext()">&rarr;</button>
+    </div>
+    <div class="proof-cta">
+      <a href="/insights" class="btn btn-outline">Explore Operational Insights</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final-cta" id="contact">
+  <div class="wrap final-cta-inner">
+    <h2>{{ doc.final_cta_heading }}</h2>
+    <p>{{ doc.final_cta_body }}</p>
+    <div class="final-cta-actions">
+      <a href="/#contact" class="btn btn-primary">Request an Operational Assessment</a>
+      <a href="/insights" class="btn btn-outline-dark">Explore Operational Insights</a>
+    </div>
+  </div>
+</section>
+
+{% include "templates/includes/pahek_footer.html" %}
+
+<script>
+{% include "templates/includes/pahek_nav_js.html" %}
+
+// ---- doctrine carousel (manual only) ----
+const doctrineSlides = document.querySelectorAll('.doctrine-slide');
+const doctrineDotsWrap = document.getElementById('doctrineDots');
+let doctrineIndex = 0;
+doctrineSlides.forEach((_, i)=>{
+  const dot = document.createElement('button');
+  if(i===0) dot.classList.add('active');
+  dot.setAttribute('aria-label', 'Go to principle ' + (i+1));
+  dot.onclick = ()=> setDoctrine(i);
+  doctrineDotsWrap.appendChild(dot);
+});
+function setDoctrine(i){
+  doctrineSlides[doctrineIndex].classList.remove('active');
+  doctrineDotsWrap.children[doctrineIndex].classList.remove('active');
+  doctrineIndex = (i + doctrineSlides.length) % doctrineSlides.length;
+  doctrineSlides[doctrineIndex].classList.add('active');
+  doctrineDotsWrap.children[doctrineIndex].classList.add('active');
+}
+function doctrineNext(){ setDoctrine(doctrineIndex+1); }
+function doctrinePrev(){ setDoctrine(doctrineIndex-1); }
+
+// ---- proof carousel (manual only) ----
+const proofSlides = document.querySelectorAll('.proof-slide');
+let proofIndex = 0;
+function setProof(i){
+  proofSlides[proofIndex].classList.remove('active');
+  proofIndex = (i + proofSlides.length) % proofSlides.length;
+  proofSlides[proofIndex].classList.add('active');
+  document.getElementById('proofCurrent').textContent = proofIndex+1;
+}
+function proofNext(){ setProof(proofIndex+1); }
+function proofPrev(){ setProof(proofIndex-1); }
+</script>
+{% endblock %}

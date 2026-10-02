@@ -1,0 +1,24 @@
+{
+ "actions": [],
+ "creation": "2026-10-02 09:00:00.000000",
+ "description": "One row of a two-column before/after comparison table (Guarding Operations)",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["column_a", "column_b"],
+ "fields": [
+  {"fieldname": "column_a", "fieldtype": "Small Text", "in_list_view": 1, "label": "Column A (old)", "reqd": 1},
+  {"fieldname": "column_b", "fieldtype": "Small Text", "in_list_view": 1, "label": "Column B (new)", "reqd": 1}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-02 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PAHEK Web",
+ "name": "PAHEK Comparison Row",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "ASC",
+ "states": []
+}

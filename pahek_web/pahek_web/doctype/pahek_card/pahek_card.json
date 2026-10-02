@@ -1,0 +1,30 @@
+{
+ "actions": [],
+ "creation": "2026-10-02 09:00:00.000000",
+ "description": "A general-purpose card: service cards, capability/sector items, control clusters, authority cards, link cards",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["icon_key", "group_label", "heading", "body", "tag_1", "tag_2", "link_text", "link_route"],
+ "fields": [
+  {"description": "Picks a built-in icon. See the app README for the list of valid keys (shield, eye, bolt, map, grid, flag, target, chart, clipboard). Leave blank for no icon.", "fieldname": "icon_key", "fieldtype": "Data", "label": "Icon Key"},
+  {"description": "Optional small label above the heading, e.g. a group name or stat value shown large", "fieldname": "group_label", "fieldtype": "Data", "label": "Eyebrow / Stat"},
+  {"fieldname": "heading", "fieldtype": "Data", "in_list_view": 1, "label": "Heading"},
+  {"fieldname": "body", "fieldtype": "Small Text", "in_list_view": 1, "label": "Body"},
+  {"fieldname": "tag_1", "fieldtype": "Data", "label": "Tag 1"},
+  {"fieldname": "tag_2", "fieldtype": "Data", "label": "Tag 2"},
+  {"fieldname": "link_text", "fieldtype": "Data", "label": "Link Text"},
+  {"description": "A path on this site, e.g. /guarding-operations, or an anchor like /#services", "fieldname": "link_route", "fieldtype": "Data", "label": "Link Route"}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-02 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PAHEK Web",
+ "name": "PAHEK Card",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "ASC",
+ "states": []
+}

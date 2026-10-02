@@ -1,0 +1,130 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<style>
+{% include "templates/includes/pahek_css_our_approach.css" %}
+</style>
+
+{% include "templates/includes/pahek_header.html" %}
+
+<!-- ================= HERO ================= -->
+<section class="hero" style="padding-bottom:64px;">
+  <div class="hero-photo">
+    <img src="{{ doc.hero_image or '/files/our-approach/site-planning.jpg' }}" alt="PAHEK team interpreting a site drawing during an operational planning session, whiteboard framework visible behind them">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="wrap hero-inner">
+    <h1>{{ doc.hero_headline }}</h1>
+    <p class="sub">{{ doc.hero_subheading }}</p>
+    <div class="hero-actions">
+      <a href="/#contact" class="btn btn-primary">{{ doc.hero_cta_primary_label }} <span class="btn-arrow">&rarr;</span></a>
+      <a href="#system" class="btn btn-outline-dark">{{ doc.hero_cta_secondary_label }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OPERATING SYSTEM (integrated with hero) ================= -->
+<section class="operating-system" id="system">
+  <div class="wrap">
+    <div class="os-lead">
+      <div class="os-intro reveal">
+        <p>{{ doc.os_intro_text }}</p>
+      </div>
+
+      <div class="os-plate reveal">
+        <span class="corner-tl"></span><span class="corner-tr"></span><span class="corner-bl"></span><span class="corner-br"></span>
+
+        <div class="os-constants">
+          {% for c in doc.os_constants %}
+          <div class="os-constant">
+            <div class="oc-label">Operating Constant</div>
+            <h4>{{ c.heading }}</h4>
+            <p>{{ c.body }}</p>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="os-constants-caption">{{ doc.os_constants_caption }}</div>
+
+        <div class="os-connector arrow"></div>
+
+        <div class="os-cycle">
+          {% for s in doc.os_cycle_steps %}
+          <div class="os-stage">
+            <div class="os-num">{{ s.number }}</div>
+            <h4>{{ s.heading }}</h4>
+            <p>{{ s.body }}</p>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="os-loopback">
+          <span><span class="loop-icon">&#8634;</span>{{ doc.os_loopback_text }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OPERATING CONSTANTS (concise) ================= -->
+<section class="ref-section">
+  <div class="wrap">
+    <div class="cycle-lead reveal">
+      <p>{{ doc.constants_intro_text }}</p>
+    </div>
+    <div class="ref-head reveal">
+      <h2 class="section-title" style="margin:0 auto;">{{ doc.constants_heading }}</h2>
+    </div>
+    <div class="ref-grid reveal">
+      {% for c in doc.constants_cards %}
+      <div class="ref-card">
+        <div class="ref-label">{{ c.group_label }}</div>
+        <h4>{{ c.heading }}</h4>
+        <p>{{ c.body }}</p>
+        <a href="{{ c.link_route }}">{{ c.link_text }} &rarr;</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE CYCLE, IN FULL ================= -->
+<section class="cycle-detail">
+  <div class="wrap">
+
+    <div class="cycle-lead reveal">
+      <p>{{ doc.cycle_intro_text }}</p>
+    </div>
+
+    {% for s in doc.cycle_stages %}
+    <div class="cycle-stage reveal">
+      <div class="cs-header"><span class="cs-num">Stage {{ s.number }}</span><h3>{{ s.heading }}</h3></div>
+      <div class="cs-body{% if loop.index >= 3 %} wide{% endif %}">
+        {{ s.body | safe }}
+        {% if s.link_route %}<a href="{{ s.link_route }}">{{ s.link_text }} &rarr;</a>{% endif %}
+      </div>
+    </div>
+    {% if not loop.last %}<div class="cycle-divider"></div>{% endif %}
+    {% endfor %}
+
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final-cta" id="contact">
+  <div class="wrap final-cta-inner">
+    <h2>{{ doc.final_cta_heading }}</h2>
+    <p>{{ doc.final_cta_body }}</p>
+    <div class="final-cta-actions">
+      <a href="/#contact" class="btn btn-primary">Request an Operational Assessment</a>
+      <a href="#system" class="btn btn-outline-dark">{{ doc.final_cta_secondary_label }}</a>
+    </div>
+  </div>
+</section>
+
+{% include "templates/includes/pahek_footer.html" %}
+
+<script>
+{% include "templates/includes/pahek_nav_js.html" %}
+</script>
+{% endblock %}
