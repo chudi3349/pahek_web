@@ -104,7 +104,7 @@
     };
 
     function send(){
-      fetch('/api/method/pahek_web.api.submit_enquiry', {
+      fetch('/api/method/pahek_web.enquiry_api.submit_enquiry', {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'X-Frappe-CSRF-Token': frappe && frappe.csrf_token ? frappe.csrf_token : ''},
         body: JSON.stringify(payload),
