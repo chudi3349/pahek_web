@@ -1,3 +1,12 @@
+# NOTE: despite this file living at pahek_web/pahek_web/enquiry_api.py, the
+# PAHEK image build pipeline consistently installs it one level deeper, so the
+# real importable/whitelisted path is "pahek_web.pahek_web.enquiry_api" (see
+# the fetch() call in www/contact.html). Reproduced identically across 4
+# separate --no-cache builds, including a builder-stage-only build, so this
+# is a deterministic quirk of bench init on this image, not a fluke - root
+# cause not fully pinned down. Any new whitelisted method added to this app
+# should be verified post-deploy the same way before assuming the plain
+# "pahek_web.<module>" path will resolve.
 import frappe
 from frappe import _
 from frappe.rate_limiter import rate_limit
