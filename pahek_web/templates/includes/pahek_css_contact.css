@@ -463,7 +463,7 @@ nav.navbar, footer.web-footer { display: none !important; }
 .contact-hero p{ color:rgba(255,255,255,0.78); font-size:17px; max-width:600px; margin:0 auto; }
 
 .contact-section{ padding:var(--space-8) 0; background:#fff; }
-.contact-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:var(--space-6); max-width:1080px; margin:0 auto; align-items:start; }
+.contact-grid{ display:grid; grid-template-columns:1fr 1.3fr; gap:var(--space-6); max-width:1080px; margin:0 auto; align-items:start; }
 @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
 
 .contact-form{ background:#fff; border:1px solid var(--line); padding:var(--space-5); }
