@@ -5,6 +5,7 @@
 <style>
 {% include "templates/includes/pahek_css_home.css" %}
 </style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 
 {% include "templates/includes/pahek_header.html" %}
 
@@ -41,11 +42,9 @@
     <span class="panel-marker"></span>
     <h3>{{ doc.stakes_heading_2 }}</h3>
     {{ doc.stakes_body_2 | safe }}
+    <a href="/#services" class="btn btn-outline-dark">Identify Operational Gaps</a>
   </div>
 </section>
-<div class="split-cta">
-  <a href="/#services" class="btn btn-outline">Identify Operational Gaps</a>
-</div>
 
 <!-- ================= TRANSFORMATION (split-screen) ================= -->
 <section class="split-section reveal">
@@ -58,11 +57,9 @@
     <span class="panel-marker"></span>
     <h3>{{ doc.transformation_heading_2 }}</h3>
     <p>{{ doc.transformation_body_2 }}</p>
+    <a href="/#services" class="btn btn-primary">Strengthen Operational Control</a>
   </div>
 </section>
-<div class="split-cta">
-  <a href="/#services" class="btn btn-primary">Strengthen Operational Control</a>
-</div>
 
 <!-- ================= SERVICES ================= -->
 <section class="services" id="services">
@@ -75,7 +72,7 @@
     <div class="service-groups">
       <div class="group-operations reveal">
         <div class="group-head"><span class="group-name">Operations</span><span class="group-line"></span></div>
-        <div class="card-row swipe">
+        <div class="card-row">
           {% for c in doc.service_cards_operations %}
           <div class="service-card">
             {{ pahek_icon(c.icon_key, class_='service-icon', stroke='#2F5FD1', stroke_width='1.6') }}
@@ -88,7 +85,7 @@
 
       <div class="group-structure reveal">
         <div class="group-head"><span class="group-name">Structure</span><span class="group-line"></span></div>
-        <div class="card-row swipe">
+        <div class="card-row">
           {% for c in doc.service_cards_structure %}
           <div class="service-card">
             {{ pahek_icon(c.icon_key, class_='service-icon', stroke='#B5793A', stroke_width='1.6') }}
@@ -101,7 +98,7 @@
 
       <div class="group-governance reveal">
         <div class="group-head"><span class="group-name">Governance</span><span class="group-line"></span></div>
-        <div class="card-row swipe">
+        <div class="card-row">
           {% for c in doc.service_cards_governance %}
           <div class="service-card">
             {{ pahek_icon(c.icon_key, class_='service-icon', stroke='#12123A', stroke_width='1.6') }}
