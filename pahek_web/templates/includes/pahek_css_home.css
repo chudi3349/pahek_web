@@ -114,7 +114,7 @@
   .nav-links a{ font-size:14px; font-weight:500; color:var(--charcoal); opacity:0.75; transition:opacity .15s; }
   .nav-links a:hover{ opacity:1; }
   .nav-cta{ display:flex; align-items:center; gap:var(--space-3); }
-  .nav-cta .btn{ padding:9px 18px; font-size:14px; }
+  .nav-cta .btn{ padding:13px 24px; font-size:15px; }
   .menu-toggle{
     display:none; width:44px; height:44px; align-items:center; justify-content:center;
     border:1.5px solid var(--line); background:#fff; flex-shrink:0;
@@ -140,7 +140,7 @@
   @media (max-width:900px){
     .nav-links{ display:none; }
     .nav-cta .btn-outline{ display:none; }
-    .nav-cta .btn{ padding:12px 18px; }
+    .nav-cta .btn{ padding:14px 20px; }
     .menu-toggle{ display:flex; }
     .mobile-menu{ display:block; }
   }
