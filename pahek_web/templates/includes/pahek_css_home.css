@@ -192,7 +192,10 @@
 
   /* ---------------- SPLIT SECTIONS (Stakes / Transformation) ---------------- */
   .split-section{ display:grid; grid-template-columns:1fr 1fr; min-height:480px; }
-  @media (max-width:900px){ .split-section{ grid-template-columns:1fr; min-height:auto; } }
+  @media (max-width:900px){
+    .split-section{ grid-template-columns:1fr; min-height:auto; }
+    .panel-light{ align-items:flex-start; }
+  }
 
   .split-panel{ padding:var(--space-7) var(--space-5); display:flex; flex-direction:column; justify-content:center; }
   .split-panel > h3, .split-panel > p{ width:min(100%, 520px); }
@@ -432,7 +435,11 @@
   .final-cta h2{ color:#fff; font-size:38px; margin-bottom:var(--space-3); }
   .final-cta p{ color:rgba(255,255,255,0.72); font-size:17px; margin-bottom:var(--space-5); }
   .final-cta-actions{ display:flex; gap:var(--space-3); justify-content:center; flex-wrap:wrap; }
-  @media (max-width:768px){ .final-cta h2{ font-size:26px; } }
+  @media (max-width:768px){
+    .final-cta h2{ font-size:26px; }
+    .final-cta-actions{ gap:12px; }
+    .final-cta-actions .btn{ width:100%; justify-content:center; }
+  }
 
   /* ---------------- FOOTER ---------------- */
   footer{ background:#0D0D2E; color:rgba(255,255,255,0.75); padding:var(--space-7) 0 var(--space-4); }
