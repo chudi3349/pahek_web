@@ -20,6 +20,11 @@ function closeMobileMenu(){
   btn.setAttribute('aria-expanded', 'false');
 }
 
+// ---- mobile nav dropdown (Services) ----
+function toggleMobileDropdown(btn){
+  btn.parentElement.classList.toggle('open');
+}
+
 // ---- footer accordion (mobile) ----
 function toggleFooter(headEl){
   if(window.innerWidth > 900) return;

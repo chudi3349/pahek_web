@@ -7,7 +7,14 @@
       </span>
     </a>
     <div class="nav-links">
-      <a href="/#services">Services</a>
+      <div class="nav-dropdown">
+        <a href="/#services" class="nav-dropdown-trigger">Services</a>
+        <div class="nav-dropdown-menu">
+          <a href="/guarding-operations">Guarding Operations</a>
+          <a href="/security-risk-assessment">Security Risk Assessments</a>
+          <a href="/operational-audits">Operational Audits</a>
+        </div>
+      </div>
       <a href="/our-approach">Framework</a>
       <a href="/insights">Insights</a>
       <a href="/about">About</a>
@@ -21,7 +28,14 @@
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
-      <a href="/#services" onclick="closeMobileMenu()">Services</a>
+      <div class="mobile-dropdown">
+        <button class="mobile-dropdown-trigger" onclick="toggleMobileDropdown(this)">Services<span class="mobile-dropdown-arrow"></span></button>
+        <div class="mobile-dropdown-menu">
+          <a href="/guarding-operations" onclick="closeMobileMenu()">Guarding Operations</a>
+          <a href="/security-risk-assessment" onclick="closeMobileMenu()">Security Risk Assessments</a>
+          <a href="/operational-audits" onclick="closeMobileMenu()">Operational Audits</a>
+        </div>
+      </div>
       <a href="/our-approach" onclick="closeMobileMenu()">Framework</a>
       <a href="/insights" onclick="closeMobileMenu()">Insights</a>
       <a href="/about" onclick="closeMobileMenu()">About</a>

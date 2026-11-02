@@ -1,0 +1,28 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<style>
+{% include "templates/includes/pahek_shared.css" %}
+
+.coming-soon-hero{ background:var(--navy); color:#fff; padding:148px 0 96px; text-align:center; }
+.coming-soon-hero h1{ font-size:clamp(34px, 4.4vw, 52px); font-weight:700; color:#fff; margin-bottom:var(--space-3); }
+.coming-soon-hero p{ color:rgba(255,255,255,0.75); font-size:17px; max-width:600px; margin:0 auto var(--space-5); }
+</style>
+
+{% include "templates/includes/pahek_header.html" %}
+
+<section class="coming-soon-hero">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center; color:var(--blue-light);">Services</div>
+    <h1>Operational Audits</h1>
+    <p>This page is being prepared. In the meantime, reach out directly to discuss your operational audit needs.</p>
+    <a href="/contact" class="btn btn-primary">Discuss Operational Challenges</a>
+  </div>
+</section>
+
+{% include "templates/includes/pahek_footer.html" %}
+
+<script>
+{% include "templates/includes/pahek_nav_js.html" %}
+</script>
+{% endblock %}
