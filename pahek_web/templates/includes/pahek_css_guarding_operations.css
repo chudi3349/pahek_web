@@ -140,8 +140,7 @@
 
   @media (max-width:900px){
     .nav-links{ display:none; }
-    .nav-cta .btn-outline{ display:none; }
-    .nav-cta .btn{ padding:14px 20px; }
+    .nav-cta{ display:none; }
     .menu-toggle{ display:flex; }
     .mobile-menu{ display:block; }
   }

@@ -11,44 +11,9 @@
 .insights-index-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-4); }
 @media (max-width:900px){ .insights-index-cards{ grid-template-columns:1fr; } }
 .insights-empty{ text-align:center; color:#5B5F6E; padding:var(--space-7) 0; font-size:16px; }
-
-/* This page ships its own header/nav/footer — hide the site's default navbar/footer. */
-nav.navbar, footer.web-footer { display: none !important; }
 </style>
 
-<header>
-  <nav>
-    <a href="/" class="logo-mark">
-      <img src="/files/homepage/logo-mark.jpg" alt="PAHEK Security icon mark">
-      <span class="logo-wordmark"><span class="logo-name"><b>PAHEK</b><b>SECURITY</b></span></span>
-    </a>
-    <div class="nav-links">
-      <a href="/#services">Services</a>
-      <a href="/our-approach">Framework</a>
-      <a href="/insights">Insights</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
-    </div>
-    <div class="nav-cta">
-      <a href="/contact" class="btn btn-outline">Discuss Operational Challenges</a>
-      <a href="/contact" class="btn btn-primary">Book an Assessment</a>
-    </div>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" onclick="toggleMobileMenu()"><span></span></button>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-inner">
-      <a href="/#services" onclick="closeMobileMenu()">Services</a>
-      <a href="/our-approach" onclick="closeMobileMenu()">Framework</a>
-      <a href="/insights" onclick="closeMobileMenu()">Insights</a>
-      <a href="/about" onclick="closeMobileMenu()">About</a>
-      <a href="/contact" onclick="closeMobileMenu()">Contact</a>
-      <div class="mobile-cta">
-        <a href="/contact" class="btn btn-outline" onclick="closeMobileMenu()">Discuss Operational Challenges</a>
-        <a href="/contact" class="btn btn-primary" onclick="closeMobileMenu()">Book an Assessment</a>
-      </div>
-    </div>
-  </div>
-</header>
+{% include "templates/includes/pahek_header.html" %}
 
 <section class="insights-index-hero">
   <div class="wrap">
@@ -80,51 +45,9 @@ nav.navbar, footer.web-footer { display: none !important; }
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="/" class="logo-mark" style="margin-bottom:var(--space-3);">
-          <img src="/files/homepage/logo-mark.jpg" alt="PAHEK Security icon mark">
-          <span class="logo-wordmark on-dark"><span class="logo-name"><b>PAHEK</b><b>SECURITY</b></span></span>
-        </a>
-        <p>PAHEK supports organizations through structured security operations systems focused on accountability, operational visibility, supervision integrity, and measurable operational control.</p>
-      </div>
-      <div class="footer-groups">
-        <div class="footer-col">
-          <h5 onclick="toggleFooter(this)">Company</h5>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/#services">Services</a></li>
-            <li><a href="/our-approach">Operational Framework</a></li>
-            <li><a href="/insights">Operational Insights</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 PAHEK Security Services Ltd. All Rights Reserved.</p>
-    </div>
-  </div>
-</footer>
+{% include "templates/includes/pahek_footer.html" %}
 
 <script>
-  function toggleMobileMenu(){
-    const menu = document.getElementById('mobileMenu');
-    const btn = document.getElementById('menuToggle');
-    const isOpen = menu.classList.toggle('open');
-    btn.classList.toggle('open', isOpen);
-    btn.setAttribute('aria-expanded', isOpen);
-  }
-  function closeMobileMenu(){
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.getElementById('menuToggle').classList.remove('open');
-  }
-  function toggleFooter(headEl){
-    if(window.innerWidth > 900) return;
-    headEl.parentElement.classList.toggle('open');
-  }
+{% include "templates/includes/pahek_nav_js.html" %}
 </script>
 {% endblock %}

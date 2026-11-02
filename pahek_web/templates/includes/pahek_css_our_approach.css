@@ -140,8 +140,7 @@
 
   @media (max-width:900px){
     .nav-links{ display:none; }
-    .nav-cta .btn-outline{ display:none; }
-    .nav-cta .btn{ padding:14px 20px; }
+    .nav-cta{ display:none; }
     .menu-toggle{ display:flex; }
     .mobile-menu{ display:block; }
   }
@@ -167,15 +166,15 @@
     background-image: linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px);
     background-size: 96px 96px;
   }
-  .hero-inner{ position:relative; z-index:2; max-width:840px; }
+  .hero-inner{ position:relative; z-index:2; max-width:960px; margin:0 auto; text-align:center; }
   .hero-overline{
     font-family:var(--font-mono); font-size:12px; font-weight:500; letter-spacing:0.22em;
     text-transform:uppercase; color:rgba(255,255,255,0.75); margin-bottom:var(--space-4);
   }
   .hero h1{ font-size:clamp(42px, 5vw, 64px); font-weight:700; line-height:1.04; letter-spacing:-0.025em; color:#fff; margin-bottom:var(--space-5); text-shadow:0 2px 14px rgba(0,0,0,0.65), 0 14px 50px rgba(0,0,0,0.5);}
-  .hero .sub{ font-size:19px; color:rgba(255,255,255,0.92); max-width:560px; margin-bottom:var(--space-6); line-height:1.65; text-shadow:0 2px 16px rgba(0,0,0,0.6);}
-  .hero-actions{ display:flex; gap:var(--space-3); align-items:center; flex-wrap:wrap; margin-bottom:var(--space-7);}
-  .hero-proof{ display:flex; gap:var(--space-6); flex-wrap:wrap; border-top:1px solid var(--line-dark); padding-top:var(--space-4); }
+  .hero .sub{ font-size:19px; color:rgba(255,255,255,0.92); max-width:560px; margin:0 auto var(--space-6); line-height:1.65; text-shadow:0 2px 16px rgba(0,0,0,0.6);}
+  .hero-actions{ display:flex; gap:var(--space-3); align-items:center; justify-content:center; flex-wrap:wrap; margin-bottom:var(--space-7);}
+  .hero-proof{ display:flex; gap:var(--space-6); flex-wrap:wrap; justify-content:center; border-top:1px solid var(--line-dark); padding-top:var(--space-4); }
   .hero-proof .stat b{ display:block; font-family:var(--font-mono); font-size:26px; font-weight:600; color:#fff; }
   .hero-proof .stat span{ font-size:12px; color:rgba(255,255,255,0.75); letter-spacing:0.04em; }
   @media (max-width:768px){
