@@ -459,6 +459,10 @@
   .footer-legal{ display:flex; gap:var(--space-3); }
   .footer-legal a{ font-size:13px; color:rgba(255,255,255,0.7); }
   .footer-legal a:hover{ color:#fff; }
+  .footer-credit{ text-align:center; margin-top:var(--space-3); padding-top:var(--space-3); border-top:1px solid var(--line-dark); }
+  .footer-credit p{ font-size:12px; color:rgba(255,255,255,0.55); }
+  .footer-credit a{ color:rgba(255,255,255,0.75); text-decoration:underline; }
+  .footer-credit a:hover{ color:#fff; }
 
   /* mobile footer accordion */
   @media (max-width:900px){
