@@ -61,7 +61,7 @@
   .eyebrow.quiet.on-dark::before{ background:rgba(255,255,255,0.3); }
 
   h2.section-title{ font-size:40px; font-weight:600; line-height:1.15; max-width:780px;}
-  @media (max-width:768px){ h2.section-title{font-size:28px;} }
+  @media (max-width:768px){ h2.section-title{font-size:28px;} .services-intro h2{ white-space:normal; } }
 
   .btn{
     display:inline-flex; align-items:center; gap:10px; white-space:nowrap;
@@ -240,7 +240,8 @@
 
   /* ---------------- SERVICES ---------------- */
   .services{ padding:var(--space-7) 0; background:var(--white); }
-  .services-intro{ max-width:680px; margin:0 auto var(--space-6); text-align:center; }
+  .services-intro{ max-width:900px; margin:0 auto var(--space-6); text-align:center; }
+  .services-intro h2{ max-width:none; white-space:nowrap; }
   .services-intro p{ color:#4B4F5E; font-size:17px; margin-top:var(--space-2); }
 
   .service-groups{ display:flex; flex-direction:column; gap:var(--space-6); }
