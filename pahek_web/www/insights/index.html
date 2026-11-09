@@ -4,11 +4,12 @@
 <style>
 {% include "templates/includes/pahek_shared.css" %}
 
-.insights-index-hero{ background:var(--navy); color:#fff; padding:148px 0 88px; text-align:center; }
+.insights-index-hero{ background:var(--navy); color:#fff; padding:120px 0; text-align:center; }
 .insights-index-hero h1{ font-size:clamp(34px, 4.4vw, 52px); font-weight:700; color:#fff; margin-bottom:var(--space-3); }
 .insights-index-hero p{ color:rgba(255,255,255,0.75); font-size:17px; max-width:600px; margin:0 auto; }
 .insights-index-grid{ padding:var(--space-7) 0; }
 .insights-index-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-4); }
+.insights-index-cards .insight-card{ min-width:0; max-width:none; width:100%; }
 @media (max-width:900px){ .insights-index-cards{ grid-template-columns:1fr; } }
 .insights-empty{ text-align:center; color:#5B5F6E; padding:var(--space-7) 0; font-size:16px; }
 
