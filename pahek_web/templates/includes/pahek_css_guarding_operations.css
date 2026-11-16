@@ -539,6 +539,9 @@
     }
   }
   .comparison-cta{ margin-top:var(--space-5); text-align:center; }
+  @media (max-width:480px){
+    .comparison-cta .btn{ white-space:normal; width:100%; text-align:center; line-height:1.35; }
+  }
 
   /* ================= GUARDING OPS: OPERATIONAL CONTROL DIAGRAM ================= */
   .control{ padding:var(--space-7) 0; background:#fff; }
