@@ -518,7 +518,7 @@
 
   /* ================= GUARDING OPS: COMPARISON TABLE ================= */
   .comparison{ padding:var(--space-7) 0; background:var(--grey-light); }
-  .comparison-head-block{ max-width:700px; margin-bottom:var(--space-6); }
+  .comparison-head-block{ max-width:700px; margin:0 auto var(--space-6); text-align:center; }
   .comparison-table{ border:1px solid var(--line); background:#fff; }
   .comparison-head{ display:grid; grid-template-columns:1fr 1fr; }
   .comparison-head div{ padding:var(--space-3) var(--space-4); font-family:var(--font-mono); font-size:12px; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; }
@@ -538,7 +538,7 @@
       font-weight:600; letter-spacing:0.05em; text-transform:uppercase; color:var(--grey-mid); margin-bottom:6px;
     }
   }
-  .comparison-cta{ margin-top:var(--space-5); }
+  .comparison-cta{ margin-top:var(--space-5); text-align:center; }
 
   /* ================= GUARDING OPS: OPERATIONAL CONTROL DIAGRAM ================= */
   .control{ padding:var(--space-7) 0; background:#fff; }
